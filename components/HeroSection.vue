@@ -1,5 +1,5 @@
 <template>
-  <section class="text-center py-20 bg-gradient-to-b from-blue-50 to-white">
+  <section class="text-center py-20 bg-[url('/assets/images/Backlmg.png')] bg-cover bg-center">
     <h1 class="text-4xl font-bold leading-snug">
       AI orqali sifatli xodimlarni ishga oling, <br />
       <span class="text-blue-600">70% vaqt va pulingizni tejang</span>

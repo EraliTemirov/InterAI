@@ -16,7 +16,11 @@ html {
 
 @layer base {
     body {
-        @apply font-greycliff dark:text-white dark:bg-main;
+        /* @apply font-greycliff dark:text-white dark:bg-main; */
+        @apply font-greycliff dark:bg-white;
+
+
+
     }
 }
 
