@@ -4,6 +4,30 @@ export default {
 	content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './app.vue', './error.vue'],
 	theme: {
 		extend: {
+			 keyframes: {
+        orbit80: {
+          '0%': { transform: 'rotate(0deg) translateX(80px) rotate(-0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(80px) rotate(-360deg)' },
+        },
+        orbit120: {
+          '0%': { transform: 'rotate(0deg) translateX(120px) rotate(-0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(120px) rotate(-360deg)' },
+        },
+        orbit160: {
+          '0%': { transform: 'rotate(0deg) translateX(160px) rotate(-0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(160px) rotate(-360deg)' },
+        },
+        orbit200: {
+          '0%': { transform: 'rotate(0deg) translateX(200px) rotate(-0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(200px) rotate(-360deg)' },
+        },
+      },
+      animation: {
+        orbit80: 'orbit80 12s linear infinite',
+        orbit120: 'orbit120 16s linear infinite',
+        orbit160: 'orbit160 20s linear infinite',
+        orbit200: 'orbit200 24s linear infinite',
+      },
 			colors: {
 				main: {
 					DEFAULT: '#1C1C1C',
@@ -24,7 +48,7 @@ export default {
 					1: '#252527'
 				},
 				grey: {
-					DEFAULT: '#9D9D9D',
+					DEFAULT: '#9D9D9D'
 				},
 				red: {
 					DEFAULT: '#9E1823'
@@ -40,7 +64,7 @@ export default {
 			fontFamily: {
 				inherit: 'inherit',
 				greycliff: ['Greycliff CF', 'sans-serif'],
-				sfPro: ['SF Pro Display', 'sans-serif'],
+				sfPro: ['SF Pro Display', 'sans-serif']
 			}
 		}
 	},
