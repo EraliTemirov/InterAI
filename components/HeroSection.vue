@@ -13,7 +13,7 @@
     </div>
   </section>
 </template> -->
-<template>
+<!-- <template>
   <div class="relative w-[500px] h-[500px] bg-blue-600 rounded-2xl overflow-hidden text-center mx-auto mt-20">
     <div class="absolute inset-0 bg-[url('/assets/images/Logo.png')] bg-center bg-contain bg-no-repeat z-0"></div>
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
@@ -35,4 +35,24 @@
       <div class="translate-x-[200px] bg-white px-3 py-1 rounded-md shadow text-sm">مرحبا</div>
     </div>
   </div>
+</template> -->
+
+<template>
+  <section class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold text-[#0A2A66] leading-snug md:leading-tight">
+        AI orqali sifatli xodimlarni ishga oling.
+        <br />
+        70% vaqt va pulingizni tejang
+      </h1>
+      <p class="mt-6 max-w-3xl text-center mx-auto text-[#0A2A66] text-base md:text-lg">
+        AI platformamiz nomzodlarni topadi, saralaydi va intervyu qiladi. Sizga faqat eng loyiq nomzodlarni taqdim etadi.
+      </p>
+      <div class="mt-8">
+        <NuxtLink to="/contact" class="inline-block bg-gradient-to-r from-[#2A6FF5] to-[#1B45BE] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:opacity-90 transition">
+          Bepul foydalaning
+        </NuxtLink>
+      </div>
+    </div>
+  </section>
 </template>
