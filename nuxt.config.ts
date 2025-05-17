@@ -28,9 +28,6 @@ export default defineNuxtConfig({
 		]
 	},
 	css: ['~/assets/css/main.css'],
-	colorMode: {
-		preference: 'dark'
-	},
 	vite: {
 		plugins: [svgLoader()]
 	},
@@ -58,7 +55,7 @@ export default defineNuxtConfig({
 				{ property: 'og:locale', content: 'en_US' } // Set locale
 			],
 			link: [
-				{ rel: 'icon', type: 'image/png', href: './logo.svg' },
+				{ rel: 'icon', type: '#', href: './logo.svg' },
 				{ rel: 'canonical', href: 'https://www.unioneeld.com/#pricing' } // Canonical URL
 			],
 			script: [
