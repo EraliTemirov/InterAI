@@ -2,7 +2,7 @@
   <footer class="bg-[#0F0F0F] text-white py-10 md:py-16">
     <div class="max-w-7xl mx-auto px-4 space-y-10">
       <div class="bg-[#1A1A1A] p-6 md:p-10 rounded-2xl text-center space-y-6">
-        <h2 class="text-2xl md:text-3xl font-semibold">Savollaringiz bormi? Xabar qoldiring</h2>
+        <h2 class="text-2xl md:text-4xl font-medium">Savollaringiz bormi? Xabar qoldiring</h2>
 
         <form class="flex flex-col md:flex-row gap-4 justify-center items-center">
           <input
@@ -22,7 +22,7 @@
           />
           <button
             type="submit"
-            class="bg-gradient-to-r from-[#2A6FF5] to-[#1B45BE] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-105 transition"
+            class="bg-gradient-to-r from-[#2a93f5] to-[#1B45BE] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-105 transition"
           >
             Jo’natish
           </button>
@@ -31,7 +31,7 @@
 
       <div class="flex flex-col md:flex-row justify-between items-center text-center text-sm text-gray-400 space-y-4 md:space-y-0">
         <div class="flex items-center gap-2">
-          <img src="#" alt="Inter-AI Logo" class="h-8" />
+          <img src="/assets/images/Logo.png" alt="Inter-AI Logo" class="h-10" />
         </div>
         <div class="flex flex-wrap justify-center md:justify-start gap-6">
           <a href="#" class="hover:text-white">Asosiy sahifa</a>

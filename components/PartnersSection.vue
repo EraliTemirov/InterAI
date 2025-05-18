@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white py-10 md:py-20 overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-xl md:text-2xl font-medium text-[#1E1E1E] mb-10">
+      <h2 class="text-lg md:text-md font-light text-[#1E1E1E] mb-10">
         Bu kompaniyalar bilan hamkorlikda ishlaymiz
       </h2>
 
