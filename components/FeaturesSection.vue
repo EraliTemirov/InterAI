@@ -55,7 +55,7 @@
 </template> -->
 
 <template>
-  <section class="bg-white py-10 sm:py-14 md:py-20">
+  <section class="py-10 sm:py-14 md:py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center">
       <!-- Top badge + heading -->
       <div class="mb-10 sm:mb-14">

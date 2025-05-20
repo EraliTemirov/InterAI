@@ -4,6 +4,11 @@ export default {
 	content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './app.vue', './error.vue'],
 	theme: {
 		extend: {
+			 backgroundImage: {
+    'hero-pattern': "url('/assets/images/Image.png')",
+	 'hero-pattern-2': "url('/assets/images/bg 2.png')",
+	 'hero-pattern-3': "url('/assets/images/bg 3.png')",
+  },
 			 keyframes: {
         orbit80: {
           '0%': { transform: 'rotate(0deg) translateX(80px) rotate(-0deg)' },

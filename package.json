@@ -12,7 +12,9 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@nuxt/ui": "^2.19.2",
+    "@nuxtjs/i18n": "^9.5.4",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "@vueuse/nuxt": "^13.2.0",
     "nuxt": "^3.14.159",
     "nuxt-gtag": "^3.0.1",
     "nuxt-swiper": "1.2.2",
