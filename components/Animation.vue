@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row justify-center items-center gap-6 px-4 py-8 min-h-screen bg-[#f5f5f5]">
     <!-- CHAP TOMON: Matn va tillar -->
-    <div class="w-[480px] h-[480px] bg-hero-pattern-2 bg-cover bg-center rounded-2xl shadow-xl p-8 flex flex-col justify-between">
+    <div class="w-[360px]  md:w-[480px] md:h-[480px] bg-hero-pattern-2 bg-cover bg-center rounded-2xl shadow-sm p-8 flex flex-col justify-between">
       <!-- Yuqori qism: matn -->
       <div class="space-y-4">
         <h2 class="text-4xl font-bold leading-snug text-[#1E1E1E]">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- O‘NG TOMON: Animatsiya card -->
-    <div class="relative w-[480px] h-[480px] bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div class="relative w-[360px] h-[360px]  md:w-[480px] md:h-[480px] bg-white rounded-2xl shadow-sm overflow-hidden">
       <div class="absolute inset-0 animate-spin-slow z-0">
         <img
           src="/assets/images/Orbital.png"

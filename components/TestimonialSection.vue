@@ -37,7 +37,7 @@
 		</ClientOnly>
 
 		<div class="mt-10">
-			<button class="bg-gradient-to-r from-[#2A6FF5] to-[#1B45BE] text-white font-medium py-3 px-8 rounded-lg shadow-md hover:opacity-90 transition">Bepul foydalaning</button>
+			<button  @click="$emit('scroll-to', 'contact')" class="bg-gradient-to-r from-[#2A6FF5] to-[#1B45BE] text-white font-medium py-3 px-8 rounded-lg shadow-md hover:opacity-90 transition">Bepul foydalaning</button>
 		</div>
 	</section>
 </template>

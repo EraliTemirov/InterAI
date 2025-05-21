@@ -4,26 +4,35 @@
 			<div class="bg-[#2F2F2F] p-6 md:p-10 rounded-2xl text-center space-y-6">
 				<h2 class="text-2xl md:text-4xl font-medium">Savollaringiz bormi? Xabar qoldiring</h2>
 
-				<form class="flex flex-col md:flex-row gap-4 justify-center items-center">
-					<input
-						type="text"
-						placeholder="Ismingiz"
-						class="w-full md:w-auto flex-1 bg-[#0F0F0F] border border-[#3A3A3A] rounded-lg py-3 px-5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2A6FF5]"
-					/>
-					<input
-						type="tel"
-						placeholder="+998 000-00-00"
-						class="w-full md:w-auto flex-1 bg-[#0F0F0F] border border-[#3A3A3A] rounded-lg py-3 px-5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2A6FF5]"
-					/>
-					<input
-						type="email"
-						placeholder="Elektron pochtangiz"
-						class="w-full md:w-auto flex-1 bg-[#0F0F0F] border border-[#3A3A3A] rounded-lg py-3 px-5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2A6FF5]"
-					/>
-					<button type="submit" class="bg-gradient-to-r from-[#2a93f5] to-[#1B45BE] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-105 transition">
-						Jo’natish
-					</button>
-				</form>
+				<form @submit.prevent="submitForm" class="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <input
+            v-model="name"
+            type="text"
+            placeholder="Ismingiz"
+            required
+            class="w-full md:w-auto flex-1 bg-[#0F0F0F] border border-[#3A3A3A] rounded-lg py-3 px-5 text-white placeholder-gray-400"
+          />
+          <input
+            v-model="phone"
+            type="tel"
+            placeholder="+998 000-00-00"
+            required
+            class="w-full md:w-auto flex-1 bg-[#0F0F0F] border border-[#3A3A3A] rounded-lg py-3 px-5 text-white placeholder-gray-400"
+          />
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Elektron pochtangiz"
+            required
+            class="w-full md:w-auto flex-1 bg-[#0F0F0F] border border-[#3A3A3A] rounded-lg py-3 px-5 text-white placeholder-gray-400"
+          />
+          <button
+            type="submit"
+            class="bg-gradient-to-r from-[#2a93f5] to-[#1B45BE] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-105 transition"
+          >
+            Jo’natish
+          </button>
+        </form>
 			</div>
 
 			<div class="flex flex-col md:flex-row justify-between items-center text-center text-sm text-gray-400 space-y-4 md:space-y-0">
@@ -52,3 +61,46 @@
 		</div>
 	</footer>
 </template>
+<script setup>
+import { ref } from 'vue'
+
+const BOT_TOKEN = '7809889909:AAHOxcqosPZTSdosOQVJ7kGLzh6XAP5JGHI'
+
+const name = ref('')
+const phone = ref('')
+const email = ref('')
+
+const submitForm = async () => {
+  const CHAT_ID = '2115609553'
+
+  const message = `
+📝 Yangi so‘rov:
+👤 Ismi: ${name.value}
+📞 Telefon: ${phone.value}
+✉️ Email: ${email.value}
+  `
+
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown',
+      }),
+    })
+
+    if (response.ok) {
+      alert('✅ Xabar yuborildi!')
+      name.value = ''
+      phone.value = ''
+      email.value = ''
+    } else {
+      alert('❌ Xatolik! CHAT_ID yoki TOKEN noto‘g‘ri.')
+    }
+  } catch (error) {
+    alert('🚫 Ulanishda xatolik.')
+  }
+}
+</script>

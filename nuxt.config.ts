@@ -17,16 +17,16 @@ export default defineNuxtConfig({
 	gtag: {
 		tags: [
 			{
-				id: 'G-25RQ9SWEKL', // Replace with your Measurement ID
+				id: 'G-25RQ9SWEK', // Replace with your Measurement ID
 				config: {
-					page_title: 'UNIONE ELD',
+					page_title: 'Inter AI',
 					send_page_view: true // Default to sending page views
 				}
 			},
 			{
-				id: 'AW-16794223838', // Replace with your Measurement ID
+				id: 'AW-1679422383', // Replace with your Measurement ID
 				config: {
-					page_title: 'UNIONE ELD',
+					page_title: 'Inter AI',
 					send_page_view: true // Default to sending page views
 				}
 			}
@@ -56,13 +56,6 @@ export default defineNuxtConfig({
 				iso: 'ru-RU',
 				file: 'ru.json'
 			},
-			{
-				code: 'ar',
-				name: 'العربية',
-				iso: 'ar-SA',
-				file: 'ar.json',
-				dir: 'rtl'
-			}
 		],
 		defaultLocale: 'uz',
 		lazy: true,
@@ -73,7 +66,6 @@ export default defineNuxtConfig({
 			cookieKey: 'i18n_redirected',
 			fallbackLocale: 'uz'
 		},
-		vueI18n: '~/i18n.config.ts'
 	},
 	experimental: {
 		renderJsonPayloads: false
@@ -116,8 +108,7 @@ export default defineNuxtConfig({
 			],
 
 			link: [
-				{ rel: 'icon', type: '#', href: './logo.svg' },
-				{ rel: 'canonical', href: 'https://www.unioneeld.com/#pricing' } // Canonical URL
+				{ rel: 'icon', type: '#', href: './log.svg' },
 			],
 			script: [
 				{

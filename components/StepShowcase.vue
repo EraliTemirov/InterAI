@@ -12,13 +12,12 @@
 			<div class="flex flex-col space-y-10 md:hidden relative">
 				<div v-for="(step, index) in steps" :key="index" class="flex flex-col text-center space-y-4 relative">
 					<div class="flex items-start space-x-4 z-10 relative">
-						<div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm shrink-0">
+						<div class="w-10 h-10 rounded-full bg-blue-500 text-white border-2 border-white flex items-center justify-center font-bold text-sm shrink-0">
 							{{ index + 1 }}
 						</div>
-						<p class="text-gray-300 text-sm text-start">{{ step.title }}</p>
+						<p class="text-gray-300 text-sm text-start border-">{{ step.title }}</p>
 					</div>
 					<div>
-						<div v-if="index !== steps.length - 1" class="absolute left-5 top-10 bottom-0 w-1 bg-gray-600 z-0"></div>
 						<img :src="step.img" :alt="step.title" class="w-full rounded-lg shadow-md" />
 					</div>
 				</div>
