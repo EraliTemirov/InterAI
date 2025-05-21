@@ -1,107 +1,119 @@
 <template>
-  <section class="relative bg-white py-16 md:py-24 overflow-hidden" ref="solutionsSection">
+  <section ref="solutionsSection" class="relative bg-white py-16 md:py-24 overflow-hidden min-h-screen">
     <div class="max-w-6xl mx-auto px-4 text-center">
       <div class="inline-flex items-center gap-2 bg-[#F9F9F9] shadow-md border rounded-full px-4 py-2 text-md text-[#1E1E1E] mb-6">
-        <img src="/assets/images/star.png" alt="">
+        <img src="/assets/images/star.png" alt="Star Icon" />
         Aqlli yechim
       </div>
       <h2 class="text-2xl md:text-4xl font-medium my-2 text-[#1E1E1E]">INTER-AI bu muammolarga yechim beradi</h2>
     </div>
-    
-    <div class="relative mt-24 max-w-6xl mx-auto space-y-10">
+
+    <div class="relative max-w-6xl mx-auto mt-24 h-[700px]">
       <div
         v-for="(item, index) in solutions"
         :key="index"
-        ref="cards"
-        class="solution-card"
-        :class="{ 'active': activeCard >= index + 1 }"
+        class="solution-layer"
+        :class="{ active: activeIndex >= index }"
+        :style="{ top: `${index * 50}px`, zIndex: activeIndex >= index ? 10 + index : 0 }"
       >
-        <img :src="item.img" :alt="item.alt" class="w-full rounded-xl shadow-md" />
+        <img :src="item.img" :alt="item.alt" class="solution-img" />
       </div>
     </div>
   </section>
 </template>
-
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
 import ai1 from '@/assets/images/Ai1.png'
 import ai2 from '@/assets/images/Ai2.png'
 import ai3 from '@/assets/images/Ai3.png'
+import Mai1 from '@/assets/images/Mai1.png'
+import Mai2 from '@/assets/images/Mai2.png'
+import Mai3 from '@/assets/images/Mai3.png'
 
-const activeCard = ref(0)
-const cards = ref([])
 const solutionsSection = ref(null)
-const nextSectionTriggered = ref(false)
+const activeIndex = ref(0)
+const solutions = ref([])
 
-const solutions = [
-  { img: ai1, alt: 'Candidates block' },
-  { img: ai2, alt: 'AI interview results' },
-  { img: ai3, alt: 'Analytics report' }
-]
+let timeoutSteps = []
 
-onMounted(async () => {
-  await nextTick() // refs ni to'liq olish uchun
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const index = cards.value.findIndex(el => el === entry.target)
-        if (index !== -1) {
-          activeCard.value = index + 1
-          
-          // Agar oxirgi rasm aktiv bo'lsa va hodisa hali sodir bo'lmagan bo'lsa
-          if (index === solutions.length - 1 && !nextSectionTriggered.value) {
-            // Keyingi componentga scrollni boshlash uchun timer
-            setTimeout(() => {
-              nextSectionTriggered.value = true
-              scrollToNextSection()
-            }, 1000) // 1 soniya kutish
-          }
-        }
-      }
-    })
-  }, { threshold: 0.5 })
-  
-  cards.value.forEach(el => observer.observe(el))
-  
-  onUnmounted(() => observer.disconnect())
-})
+const isMobile = () => window.innerWidth < 768 // 768px dan kichik – mobil deb hisoblanadi
 
-function scrollToNextSection() {
-  // Keyingi elementni topish
-  const nextSection = solutionsSection.value.nextElementSibling
-  if (nextSection) {
-    nextSection.scrollIntoView({ behavior: 'smooth' })
-  }
+const startAnimation = () => {
+  solutions.value.forEach((_, i) => {
+    const timeout = setTimeout(() => {
+      activeIndex.value = i
+    }, i * 1000)
+    timeoutSteps.push(timeout)
+  })
 }
+
+const clearAnimationTimeouts = () => {
+  timeoutSteps.forEach(clearTimeout)
+  timeoutSteps = []
+}
+
+onMounted(() => {
+  // Ekran o'lchamiga qarab rasm to'plamini tanlaymiz
+  solutions.value = isMobile()
+    ? [
+        { img: Mai1, alt: 'Mobile Candidates block' },
+        { img: Mai2, alt: 'Mobile AI interview results' },
+        { img: Mai3, alt: 'Mobile Analytics report' }
+      ]
+    : [
+        { img: ai1, alt: 'Candidates block' },
+        { img: ai2, alt: 'AI interview results' },
+        { img: ai3, alt: 'Analytics report' }
+      ]
+
+  if (typeof window !== 'undefined' && solutionsSection.value && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startAnimation()
+          } else {
+            activeIndex.value = -1
+            clearAnimationTimeouts()
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    observer.observe(solutionsSection.value)
+
+    onUnmounted(() => {
+      observer.disconnect()
+    })
+  }
+})
 </script>
 
 <style scoped>
-.solution-card {
-  position: relative;
-  transition: transform 0.6s ease, z-index 0.1s;
-  z-index: 0;
-  margin-top: -100px; /* Rasmlarni bir-biriga yaqinroq joylashtirish */
-}
-
-/* Birinchi rasmni normal pozitsiyada ko'rsatish */
-.solution-card:first-child {
-  margin-top: 0;
-}
-
-.solution-card.active {
-  transform: translateY(-100px) scale(1.05);
-  z-index: 10;
-}
-
-/* Aktivmasligida rasmlarni yashirish */
-.solution-card:not(.active) {
-  opacity: 0.7;
-  transform: translateY(0) scale(0.95);
-}
-
-/* Animatsiyani yaxshilash */
 section {
-  min-height: 100vh; /* Scrol animatsiyasi uchun yetarli joy */
+  scroll-margin-top: 80px;
+}
+
+.solution-layer {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(80px) scale(0.98);
+  filter: blur(10px);
+  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.solution-layer.active {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+  filter: blur(0px);
+}
+
+.solution-img {
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 </style>

@@ -64,14 +64,14 @@
 <script setup>
 import { ref } from 'vue'
 
-const BOT_TOKEN = '7809889909:AAHOxcqosPZTSdosOQVJ7kGLzh6XAP5JGHI'
+const BOT_TOKEN = '7604657118:AAHIN3jtwoWsq8I3AmlxDsTo15UjjfJ1DaE'
 
 const name = ref('')
 const phone = ref('')
 const email = ref('')
 
 const submitForm = async () => {
-  const CHAT_ID = '2115609553'
+  const CHAT_ID = '1770556788'
 
   const message = `
 📝 Yangi so‘rov:
